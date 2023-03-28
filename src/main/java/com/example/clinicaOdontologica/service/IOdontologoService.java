@@ -5,16 +5,12 @@ import com.example.clinicaOdontologica.entity.Odontologo;
 import java.util.List;
 
 public interface IOdontologoService {
-    private Odontologo guardarOdontologo(){
-        return null;
-    };
-    private Odontologo eliminarOdontologo(Long id){
-        return null;
-    };
-    private Odontologo buscarOdontologo(Long id){
-        return null;
-    };
-    private List<Odontologo> buscarTodosOdontologos(){
-        return null;
-    };
+    public Odontologo guardarOdontologo();
+
+    public Odontologo eliminarOdontologo(Long id);
+
+    public Odontologo buscarOdontologo(Long id);
+
+    public List<Odontologo> buscarTodosOdontologos();
+
 }

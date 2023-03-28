@@ -5,16 +5,12 @@ import com.example.clinicaOdontologica.entity.Paciente;
 import java.util.List;
 
 public interface IPacienteService {
-    private Paciente guardarPaciente(){
-        return null;
-    };
-    private Paciente eliminarPaciente(Long id){
-        return null;
-    };
-    private Paciente buscarPaciente(Long id){
-        return null;
-    };
-    private List<Paciente> buscarTodosPacientes(){
-        return null;
-    };
+    public Paciente guardarPaciente();
+
+    public Paciente eliminarPaciente(Long id);
+
+    public Paciente buscarPaciente(Long id);
+
+    public List<Paciente> buscarTodosPacientes();
+
 }
