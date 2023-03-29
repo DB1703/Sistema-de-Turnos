@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table
+@Table(name = "Turnos")
 public class Turno {
     @Id
     @SequenceGenerator(name = "turno_sequence", sequenceName = "turno_sequence")
