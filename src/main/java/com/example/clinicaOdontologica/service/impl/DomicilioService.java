@@ -3,6 +3,7 @@ package com.example.clinicaOdontologica.service.impl;
 import com.example.clinicaOdontologica.entity.Domicilio;
 import com.example.clinicaOdontologica.repository.IDomicilioRepository;
 import com.example.clinicaOdontologica.service.IDomicilioService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +12,10 @@ import java.util.List;
 @Service
 public class DomicilioService implements IDomicilioService{
     @Autowired
-    private final IDomicilioRepository domicilioRepository;
+    private IDomicilioRepository domicilioRepository;
 
+    @Autowired
+    ObjectMapper objectMapper;
 
     @Override
     public Domicilio guardarDomicilio() {

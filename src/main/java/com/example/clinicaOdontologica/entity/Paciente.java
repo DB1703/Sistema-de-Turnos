@@ -1,5 +1,6 @@
 package com.example.clinicaOdontologica.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -19,6 +20,9 @@ public class Paciente {
     private String email;
     private int dni;
     private LocalDate fechaIngreso;
+    @OneToMany(mappedBy = "pacientes")
+    @JsonIgnore
+    private Set<Turno> turnos;
 
     @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
     private Set<Domicilio> domicilios;

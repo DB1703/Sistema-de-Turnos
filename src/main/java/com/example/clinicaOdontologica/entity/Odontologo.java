@@ -1,6 +1,9 @@
 package com.example.clinicaOdontologica.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.Set;
 
 
 @Entity
@@ -15,7 +18,9 @@ public class Odontologo {
     private String apellido;
     private Long id;
     private Long matricula;
-
+    @OneToMany(mappedBy = "odontologos")
+    @JsonIgnore
+    private Set<Turno> turnos;
     public Odontologo() {
     }
 
