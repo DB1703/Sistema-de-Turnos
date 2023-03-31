@@ -17,12 +17,11 @@ public class Odontologo {
     @Id
     @SequenceGenerator(name = "odontologo_sequence", sequenceName = "odontologo_sequence")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "odontologo_sequence")
-
+    private Long id;
     private String nombre;
     private String apellido;
-    private Long id;
     private Long matricula;
-    @OneToMany(mappedBy = "odontologos")
+    @OneToMany(mappedBy = "odontologo")
     @JsonIgnore
     private Set<Turno> turnos;
 }

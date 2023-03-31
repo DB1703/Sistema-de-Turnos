@@ -18,24 +18,24 @@ public class DomicilioService implements IDomicilioService{
     @Autowired
     ObjectMapper objectMapper;
 
-
     @Override
-    public Domicilio guardarDomicilio(DomicilioDTO domicilioDTO) {
-        return null;
+    public void guardarDomicilio(DomicilioDTO domicilioDTO) {
+        Domicilio domicilio = objectMapper.convertValue(domicilioDTO,Domicilio.class);
+        domicilioRepository.save(domicilio);
     }
 
     @Override
-    public Domicilio eliminar(Long id) {
-        return null;
+    public void eliminar(Long id) {
+        domicilioRepository.delete(id);
     }
 
     @Override
-    public Domicilio buscar(Long id) {
-        return null;
+    public void buscar(Long id) {
+
     }
 
     @Override
-    public List<Domicilio> buscarTodosDomicilios() {
-        return null;
+    public void buscarTodosDomicilios() {
+
     }
 }
