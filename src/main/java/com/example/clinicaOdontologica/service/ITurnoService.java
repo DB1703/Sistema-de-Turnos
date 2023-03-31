@@ -1,16 +1,19 @@
 package com.example.clinicaOdontologica.service;
 
 import com.example.clinicaOdontologica.entity.Turno;
+import com.example.clinicaOdontologica.repository.dto.PacienteDTO;
 import com.example.clinicaOdontologica.repository.dto.TurnoDTO;
 
 import java.util.List;
+import java.util.Set;
 
 public interface ITurnoService {
-    public void guardarTurno(TurnoDTO turnoDTO);
+    void crearTurno(TurnoDTO turnoDTO);
 
-    public void eliminarTurno(Long id);
+    TurnoDTO leerTurno(Long id);
 
-    public void buscarTurno(Long id);
+    void eliminarTurno(Long id);
 
-    public void listarTodosTurnos();
+    Set<TurnoDTO> TodosLosTurnos();
+
 }

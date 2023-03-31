@@ -3,15 +3,16 @@ package com.example.clinicaOdontologica.service;
 import com.example.clinicaOdontologica.entity.Paciente;
 import com.example.clinicaOdontologica.repository.dto.PacienteDTO;
 
-import java.util.List;
+
+import java.util.Set;
 
 public interface IPacienteService {
-    public void guardarPaciente(PacienteDTO pacienteDTO);
+    void crearPaciente(PacienteDTO pacienteDTO);
 
-    public void eliminarPaciente(Long id);
+    PacienteDTO leerPaciente(Long id);
 
-    public void buscarPaciente(Long id);
+    void eliminarPaciente(Long id);
 
-    public void listarTodosPacientes();
+    Set<PacienteDTO> TodosLosPacientes();
 
 }

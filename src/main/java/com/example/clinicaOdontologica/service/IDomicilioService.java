@@ -2,16 +2,18 @@ package com.example.clinicaOdontologica.service;
 
 import com.example.clinicaOdontologica.entity.Domicilio;
 import com.example.clinicaOdontologica.repository.dto.DomicilioDTO;
+import com.example.clinicaOdontologica.repository.dto.OdontologoDTO;
 
 import java.util.List;
+import java.util.Set;
 
 public interface IDomicilioService {
-    public void guardarDomicilio(DomicilioDTO domicilioDTO);
+    void crearDomicilio(DomicilioDTO domicilioDTO);
 
-    public void eliminar(Long id);
+    DomicilioDTO leerDomicilio(Long id);
 
-    public void buscar(Long id);
+    void eliminarDomicilio(Long id);
 
-    public void buscarTodosDomicilios();
+    Set<DomicilioDTO> TodosLosDomicilios();
 
 }
