@@ -1,6 +1,6 @@
 package com.example.clinicaOdontologica.service.impl;
 
-import com.example.clinicaOdontologica.controller.PacienteController;
+//import com.example.clinicaOdontologica.controller.PacienteController;
 import com.example.clinicaOdontologica.entity.Paciente;
 import com.example.clinicaOdontologica.repository.IPacienteRepository;
 import com.example.clinicaOdontologica.repository.dto.PacienteDTO;

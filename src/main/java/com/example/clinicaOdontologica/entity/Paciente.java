@@ -29,6 +29,6 @@ public class Paciente {
     @JsonIgnore
     private Set<Turno> turnos;
 
-    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "paciente", fetch = FetchType.EAGER)
     private Set<Domicilio> domicilios;
 }
