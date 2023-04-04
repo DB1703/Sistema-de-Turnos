@@ -14,11 +14,5 @@ public class PacienteDTO {
     private int dni;
     private LocalDate fechaIngreso;
 
-    public PacienteDTO(String apellido, String nombre, String email, int dni, LocalDate fechaIngreso) {
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.email = email;
-        this.dni = dni;
-        this.fechaIngreso = fechaIngreso;
-    }
+
 }

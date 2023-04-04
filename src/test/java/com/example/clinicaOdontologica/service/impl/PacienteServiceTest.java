@@ -15,15 +15,28 @@ class PacienteServiceTest {
     IPacienteService pacienteService;
 
     @Test
-    public void borrarPaciente() {
-        PacienteDTO pacienteDTO = new PacienteDTO("De Bernardi", "Franco", "debernardifranco@mail.com", 12345678, LocalDate.of(2003,8,17));
+    public void crearPaciente() {
+        PacienteDTO merePaciente = new PacienteDTO();
 
-        pacienteService.crearPaciente(pacienteDTO);
+        merePaciente.setNombre("Mere");
+        merePaciente.setApellido("Mera");
+        merePaciente.setDni(44895904);
+        merePaciente.setEmail("martin@mail.com");
+        merePaciente.setFechaIngreso(LocalDate.of(2003,8,17));
 
-        PacienteDTO francoPaciente = pacienteService.leerPaciente(1L);
+        pacienteService.crearPaciente(merePaciente);
 
-        assertNotNull(francoPaciente);
 
-        //pacienteService.eliminarPaciente(2L);
+
+        assertNotNull(merePaciente);
+
+
+    }
+
+    @Test
+    public void borrarPaciente(){
+        pacienteService.eliminarPaciente(1L);
+        pacienteService.eliminarPaciente(2L);
+
     }
 }

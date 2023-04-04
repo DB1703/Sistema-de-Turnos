@@ -14,11 +14,4 @@ public class DomicilioDTO {
     private String provincia;
     private Paciente paciente;
 
-    public DomicilioDTO(String calle, int numero, String localidad, String provincia, Paciente paciente) {
-        this.calle = calle;
-        this.numero = numero;
-        this.localidad = localidad;
-        this.provincia = provincia;
-        this.paciente = paciente;
-    }
 }

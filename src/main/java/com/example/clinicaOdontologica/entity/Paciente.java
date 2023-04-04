@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Builder
@@ -17,7 +18,7 @@ import java.util.Set;
 public class Paciente {
 
     @Id
-    @SequenceGenerator(name = "paciente_sequence", sequenceName = "paciente_sequence")
+    @SequenceGenerator(name = "paciente_sequence", sequenceName = "paciente_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "paciente_sequence")
     private Long id;
     private String apellido;
@@ -29,6 +30,6 @@ public class Paciente {
     @JsonIgnore
     private Set<Turno> turnos;
 
-    @OneToMany(mappedBy = "paciente", fetch = FetchType.EAGER)
-    private Set<Domicilio> domicilios;
+    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY) //me da problemas con lazy
+    private Set<Domicilio> domicilios = new HashSet<>();
 }

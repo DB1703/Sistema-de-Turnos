@@ -11,9 +11,4 @@ public class OdontologoDTO {
     private Long id;
     private Long matricula;
 
-    public OdontologoDTO(String nombre, String apellido, Long matricula) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.matricula = matricula;
-    }
 }
