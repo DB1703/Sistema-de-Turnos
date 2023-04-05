@@ -1,0 +1,1 @@
+[2023-04-0517:38:12] [ ERROR] [GlobalExceptionHandler:17] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "listaPac"
