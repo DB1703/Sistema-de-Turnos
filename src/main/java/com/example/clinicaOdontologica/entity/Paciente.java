@@ -30,6 +30,6 @@ public class Paciente {
     @JsonIgnore
     private Set<Turno> turnos;
 
-    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY) //me da problemas con lazy
+    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
     private Set<Domicilio> domicilios = new HashSet<>();
 }
