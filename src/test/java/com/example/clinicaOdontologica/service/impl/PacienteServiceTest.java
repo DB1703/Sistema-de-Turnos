@@ -1,5 +1,7 @@
 package com.example.clinicaOdontologica.service.impl;
 
+import com.example.clinicaOdontologica.entity.Domicilio;
+import com.example.clinicaOdontologica.repository.dto.DomicilioDTO;
 import com.example.clinicaOdontologica.repository.dto.PacienteDTO;
 import com.example.clinicaOdontologica.service.IPacienteService;
 import org.junit.jupiter.api.Test;
@@ -16,27 +18,42 @@ class PacienteServiceTest {
 
     @Test
     public void crearPaciente() {
-        PacienteDTO merePaciente = new PacienteDTO();
+        PacienteDTO PacienteTest = new PacienteDTO();
+        Domicilio domicilioTest = new Domicilio();
 
-        merePaciente.setNombre("Mere");
-        merePaciente.setApellido("Mera");
-        merePaciente.setDni(44895904);
-        merePaciente.setEmail("martin@mail.com");
-        merePaciente.setFechaIngreso(LocalDate.of(2003,8,17));
+        PacienteTest.setNombre("Esto es una prueba");
+        PacienteTest.setApellido("Test de creacion de paciente");
+        PacienteTest.setDni(44895904);
+        PacienteTest.setEmail("martin@mail.com");
+        PacienteTest.setFechaIngreso(LocalDate.of(1998,3,10));
+        domicilioTest.setCalle("Calle prueba");
+        domicilioTest.setNumero(4356);
+        domicilioTest.setProvincia("Provincia de prueba");
+        domicilioTest.setLocalidad("Localidad de prueba");
+        PacienteTest.setDomicilio(domicilioTest);
 
-        pacienteService.crearPaciente(merePaciente);
+        pacienteService.crearPaciente(PacienteTest);
 
+        assertNotNull(PacienteTest);
 
-
-        assertNotNull(merePaciente);
-
-
+    }
+    @Test
+    public void leerPaciente(){
+        //ID del paciente creado arriba, este es ficticio
+        pacienteService.leerPaciente(31L);
     }
 
     @Test
-    public void borrarPaciente(){
-        pacienteService.eliminarPaciente(1L);
-        pacienteService.eliminarPaciente(2L);
+    public void TodosLosPacientes(){
+        pacienteService.TodosLosPacientes();
+    }
+
+    @Test
+    public void eliminarPaciente(){
+        //ID del paciente creado arriba, este es ficticio
+        pacienteService.eliminarPaciente(31L);
 
     }
+
+
 }
