@@ -33,7 +33,7 @@ public class Paciente {
     //@OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
     //private Set<Domicilio> domicilios = new HashSet<>();
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "domicilio_id")
     private Domicilio domicilio;
 }

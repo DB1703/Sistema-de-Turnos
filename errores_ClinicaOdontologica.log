@@ -26,3 +26,4 @@
 [2023-04-0802:34:00] [ ERROR] [GlobalExceptionHandler:17] could not execute statement; SQL [n/a]; constraint ["FKTFF8IEH5WFECPJF45I11XUG8C: PUBLIC.PACIENTES FOREIGN KEY(DOMICILIO_ID) REFERENCES PUBLIC.DOMICILIOS(ID) (CAST(1 AS BIGINT))"; SQL statement:
 delete from domicilios where id=? [23503-214]]
 [2023-04-0802:34:28] [ ERROR] [GlobalExceptionHandler:17] Unable to find com.example.clinicaOdontologica.entity.Paciente with id 5 (through reference chain: com.example.clinicaOdontologica.entity.Turno["paciente"]->com.example.clinicaOdontologica.entity.Paciente$HibernateProxy$XdPTDgpW["apellido"])
+[2023-04-0802:47:48] [ ERROR] [GlobalExceptionHandler:17] org.hibernate.TransientPropertyValueException: object references an unsaved transient instance - save the transient instance before flushing : com.example.clinicaOdontologica.entity.Paciente.domicilio -> com.example.clinicaOdontologica.entity.Domicilio
