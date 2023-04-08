@@ -1,5 +1,6 @@
 package com.example.clinicaOdontologica.repository.dto;
 
+import com.example.clinicaOdontologica.entity.Domicilio;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,6 @@ public class PacienteDTO {
     private String email;
     private int dni;
     private LocalDate fechaIngreso;
-
+    private Domicilio domicilio;
 
 }

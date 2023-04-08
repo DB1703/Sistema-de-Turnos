@@ -30,6 +30,10 @@ public class Paciente {
     @JsonIgnore
     private Set<Turno> turnos;
 
-    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
-    private Set<Domicilio> domicilios = new HashSet<>();
+    //@OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
+    //private Set<Domicilio> domicilios = new HashSet<>();
+
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "domicilio_id")
+    private Domicilio domicilio;
 }

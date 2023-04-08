@@ -1,5 +1,6 @@
 package com.example.clinicaOdontologica.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,7 +21,10 @@ public class Domicilio {
     private int numero;
     private String localidad;
     private String provincia;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "paciente_id")
+    //@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    //@JoinColumn(name = "paciente_id")
+    @OneToOne(mappedBy = "domicilio")
+    @JsonIgnore
     private Paciente paciente;
 }
