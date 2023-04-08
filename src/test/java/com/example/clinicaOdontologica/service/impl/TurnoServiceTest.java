@@ -35,48 +35,18 @@ class TurnoServiceTest {
     @Test
     void crearTurno() {
         TurnoDTO turnoTestTurno = new TurnoDTO();
-        PacienteDTO pacienteTestTurno = new PacienteDTO();
-        Domicilio domicilioTestTurno = new Domicilio();
-        OdontologoDTO odontologoTestTurno = new OdontologoDTO();
-
-        //Creacion de paciente
-
-        pacienteTestTurno.setNombre("Prueba Turno Nombre Paciente");
-        pacienteTestTurno.setApellido("test turno paciente Apellido");
-        pacienteTestTurno.setEmail("Test turno paciente email");
-        pacienteTestTurno.setDni(7654321);
-        pacienteTestTurno.setFechaIngreso(LocalDate.of(1968,4,30));
-        domicilioTestTurno.setLocalidad("Test turno domicilio localidad");
-        domicilioTestTurno.setProvincia("Test turno domicilio provincia");
-        domicilioTestTurno.setCalle("Test turno calle domicilio calle");
-        domicilioTestTurno.setNumero(5600);
-        pacienteTestTurno.setDomicilio(domicilioTestTurno);
-
-        pacienteService.crearPaciente(pacienteTestTurno);
-
-        logger.info("Paciente creado");
-
-        //Creación de odontologo
-
-        odontologoTestTurno.setNombre("Test turno odontologo nombre");
-        odontologoTestTurno.setApellido("Test turno odontologo apellido");
-        odontologoTestTurno.setMatricula(1015L);
-
-        odontologoService.crearOdontologo(odontologoTestTurno);
-
-        logger.info("Odontologo creado");
-
         //Creacion Turno
 
         logger.info("Seteando Turno");
 
+        turnoService.setPacienteExistente(100L,turnoTestTurno);
+        turnoService.setOdontologoExistente(100L,turnoTestTurno);
         turnoTestTurno.setFecha("2023-12-12");
         turnoTestTurno.setHora("16:15");
-        //Comentado lo de abajo porque no logré resolver como tendria que llamar desde aca el odontologo y paciente de arriba
+        turnoService.crearTurno(turnoTestTurno);
 
-        //turnoTestTurno.setOdontologo(odontologoTestTurno);
-        //turnoTestTurno.setPaciente(pacienteTestTurno);
-
+        TurnoDTO turnoDTO = turnoService.leerTurno(1L);
+        assertEquals(1L,turnoDTO.getId());
 
     }
 

@@ -26,6 +26,8 @@ class DomicilioServiceTest {
 
         domicilioService.crearDomicilio(domicilioTest);
 
+        assertNotNull(domicilioTest);
+
         logger.info("Domicilio Creado!");
     }
 

@@ -16,4 +16,9 @@ public interface ITurnoService {
 
     Set<TurnoDTO> TodosLosTurnos();
 
+    void setOdontologoExistente(Long idOdontologo, TurnoDTO turnoDTO);
+
+    void setPacienteExistente(Long idPaciente, TurnoDTO turnoDTO);
+
+
 }

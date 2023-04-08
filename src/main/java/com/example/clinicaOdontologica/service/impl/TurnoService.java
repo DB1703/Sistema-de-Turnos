@@ -1,10 +1,9 @@
 package com.example.clinicaOdontologica.service.impl;
 
-import com.example.clinicaOdontologica.ClinicaOdontologicaApplication;
+import com.example.clinicaOdontologica.entity.Odontologo;
 import com.example.clinicaOdontologica.entity.Paciente;
 import com.example.clinicaOdontologica.entity.Turno;
 import com.example.clinicaOdontologica.repository.ITurnoRepository;
-import com.example.clinicaOdontologica.repository.dto.PacienteDTO;
 import com.example.clinicaOdontologica.repository.dto.TurnoDTO;
 import com.example.clinicaOdontologica.service.ITurnoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,6 +25,13 @@ public class TurnoService implements ITurnoService {
 
     @Autowired
     ObjectMapper mapper;
+
+    @Autowired
+    PacienteService pacienteService;
+
+    @Autowired
+    OdontologoService odontologoService;
+
     @Override
     public void crearTurno(TurnoDTO turnoDTO) {
         Turno turno = mapper.convertValue(turnoDTO, Turno.class);
@@ -63,4 +69,18 @@ public class TurnoService implements ITurnoService {
         logger.info("Todos los Turnos");
         return turnosDTO;
     }
+
+    @Override
+    public void setOdontologoExistente(Long idOdontologo, TurnoDTO turnoDTO) {
+        Odontologo odontologoMappeado = mapper.convertValue(odontologoService.leerOdontologo(idOdontologo), Odontologo.class);
+        turnoDTO.setOdontologo(odontologoMappeado);
+    }
+
+    @Override
+    public void setPacienteExistente(Long idPaciente, TurnoDTO turnoDTO) {
+        Paciente pacienteMappeado = mapper.convertValue(pacienteService.leerPaciente(idPaciente), Paciente.class);
+        turnoDTO.setPaciente(pacienteMappeado);
+    }
+
+
 }

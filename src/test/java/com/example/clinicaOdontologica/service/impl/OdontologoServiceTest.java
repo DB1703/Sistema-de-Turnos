@@ -26,6 +26,8 @@ class OdontologoServiceTest {
 
         odontologoService.crearOdontologo(odontologoTest);
 
+        assertNotNull(odontologoTest);
+
         logger.info("Odontologo creado");
 
     }
