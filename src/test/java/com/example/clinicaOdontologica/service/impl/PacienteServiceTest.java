@@ -1,9 +1,11 @@
 package com.example.clinicaOdontologica.service.impl;
 
+import com.example.clinicaOdontologica.ClinicaOdontologicaApplication;
 import com.example.clinicaOdontologica.entity.Domicilio;
 import com.example.clinicaOdontologica.repository.dto.DomicilioDTO;
 import com.example.clinicaOdontologica.repository.dto.PacienteDTO;
 import com.example.clinicaOdontologica.service.IPacienteService;
+import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,6 +15,8 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class PacienteServiceTest {
+
+    private static final Logger logger = Logger.getLogger(PacienteServiceTest.class);
     @Autowired
     IPacienteService pacienteService;
 
@@ -32,7 +36,9 @@ class PacienteServiceTest {
         domicilioTest.setLocalidad("Localidad de prueba");
         PacienteTest.setDomicilio(domicilioTest);
 
+
         pacienteService.crearPaciente(PacienteTest);
+        logger.info("Paciente creado!");
 
         assertNotNull(PacienteTest);
 
@@ -41,17 +47,20 @@ class PacienteServiceTest {
     public void leerPaciente(){
         //ID del paciente creado arriba, este es ficticio
         pacienteService.leerPaciente(31L);
+        logger.info("Lo encontré!");
     }
 
     @Test
     public void TodosLosPacientes(){
         pacienteService.TodosLosPacientes();
+        logger.info("Acá están todos");
     }
 
     @Test
     public void eliminarPaciente(){
         //ID del paciente creado arriba, este es ficticio
         pacienteService.eliminarPaciente(31L);
+        logger.info("Eliminado");
 
     }
 

@@ -1,5 +1,6 @@
 package com.example.clinicaOdontologica.service.impl;
 
+import com.example.clinicaOdontologica.ClinicaOdontologicaApplication;
 import com.example.clinicaOdontologica.entity.Domicilio;
 import com.example.clinicaOdontologica.entity.Odontologo;
 import com.example.clinicaOdontologica.entity.Paciente;
@@ -10,6 +11,7 @@ import com.example.clinicaOdontologica.repository.dto.TurnoDTO;
 import com.example.clinicaOdontologica.service.IOdontologoService;
 import com.example.clinicaOdontologica.service.IPacienteService;
 import com.example.clinicaOdontologica.service.ITurnoService;
+import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,6 +21,7 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class TurnoServiceTest {
+    private static final Logger logger = Logger.getLogger(TurnoServiceTest.class);
 
     @Autowired
     ITurnoService turnoService;
@@ -51,6 +54,8 @@ class TurnoServiceTest {
 
         pacienteService.crearPaciente(pacienteTestTurno);
 
+        logger.info("Paciente creado");
+
         //Creación de odontologo
 
         odontologoTestTurno.setNombre("Test turno odontologo nombre");
@@ -59,12 +64,16 @@ class TurnoServiceTest {
 
         odontologoService.crearOdontologo(odontologoTestTurno);
 
+        logger.info("Odontologo creado");
+
         //Creacion Turno
+
+        logger.info("Seteando Turno");
 
         turnoTestTurno.setFecha("2023-12-12");
         turnoTestTurno.setHora("16:15");
         //Comentado lo de abajo porque no logré resolver como tendria que llamar desde aca el odontologo y paciente de arriba
-        
+
         //turnoTestTurno.setOdontologo(odontologoTestTurno);
         //turnoTestTurno.setPaciente(pacienteTestTurno);
 
@@ -76,6 +85,8 @@ class TurnoServiceTest {
         //ID del turno creado arriba, este es ficticio
 
         turnoService.leerTurno(3L);
+
+        logger.info("Aca estas");
     }
 
     @Test
@@ -83,10 +94,14 @@ class TurnoServiceTest {
         //ID del turno creado arriba, este es ficticio
 
         turnoService.eliminarTurno(3L);
+
+        logger.info("Turno eliminado");
     }
 
     @Test
     void todosLosTurnos() {
         turnoService.TodosLosTurnos();
+
+        logger.info("Aca estan todos los turnos");
     }
 }

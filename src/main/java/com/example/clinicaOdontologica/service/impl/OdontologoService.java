@@ -1,5 +1,6 @@
 package com.example.clinicaOdontologica.service.impl;
 
+import com.example.clinicaOdontologica.ClinicaOdontologicaApplication;
 import com.example.clinicaOdontologica.entity.Odontologo;
 import com.example.clinicaOdontologica.entity.Paciente;
 import com.example.clinicaOdontologica.repository.IOdontologoRepository;
@@ -7,6 +8,7 @@ import com.example.clinicaOdontologica.repository.dto.OdontologoDTO;
 import com.example.clinicaOdontologica.repository.dto.PacienteDTO;
 import com.example.clinicaOdontologica.service.IOdontologoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
 import org.modelmapper.internal.bytebuddy.implementation.auxiliary.AuxiliaryType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,7 @@ import java.util.Optional;
 import java.util.Set;
 @Service
 public class OdontologoService implements IOdontologoService {
+    private static final Logger logger = Logger.getLogger(OdontologoService.class);
 
     @Autowired
     private IOdontologoRepository odontologoRepository;
@@ -28,6 +31,8 @@ public class OdontologoService implements IOdontologoService {
     public void crearOdontologo(OdontologoDTO odontologoDTO) {
         Odontologo odontologo = mapper.convertValue(odontologoDTO, Odontologo.class);
         odontologoRepository.save(odontologo);
+
+        logger.info("Odontologo creado");
     }
 
     @Override
@@ -36,13 +41,14 @@ public class OdontologoService implements IOdontologoService {
         OdontologoDTO odontologoDTO = null;
         if (odontologo.isPresent())
             odontologoDTO = mapper.convertValue(odontologo, OdontologoDTO.class);
-
+        logger.info("Odontologo encontrado");
         return odontologoDTO;
     }
 
     @Override
     public void eliminarOdontologo(Long id) {
         odontologoRepository.deleteById(id);
+        logger.info("Odontologo eliminado");
     }
 
     @Override
@@ -54,7 +60,7 @@ public class OdontologoService implements IOdontologoService {
         for (Odontologo odontologo: odontologos) {
             odontologosDTO.add(mapper.convertValue(odontologo, OdontologoDTO.class));
         }
-
+        logger.info("Todos los odontologos presentes");
         return odontologosDTO;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.clinicaOdontologica.service.impl;
 
+import com.example.clinicaOdontologica.ClinicaOdontologicaApplication;
 import com.example.clinicaOdontologica.entity.Domicilio;
 import com.example.clinicaOdontologica.entity.Odontologo;
 import com.example.clinicaOdontologica.repository.IDomicilioRepository;
@@ -7,6 +8,7 @@ import com.example.clinicaOdontologica.repository.dto.DomicilioDTO;
 import com.example.clinicaOdontologica.repository.dto.OdontologoDTO;
 import com.example.clinicaOdontologica.service.IDomicilioService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,7 @@ import java.util.Set;
 
 @Service
 public class DomicilioService implements IDomicilioService{
+    private static final Logger logger = Logger.getLogger(DomicilioService.class);
     @Autowired
     private IDomicilioRepository domicilioRepository;
 
@@ -27,6 +30,8 @@ public class DomicilioService implements IDomicilioService{
     public void crearDomicilio(DomicilioDTO domicilioDTO) {
         Domicilio domicilio = mapper.convertValue(domicilioDTO,Domicilio.class);
         domicilioRepository.save(domicilio);
+
+        logger.info("Domicilio creado");
     }
 
     @Override
@@ -35,13 +40,14 @@ public class DomicilioService implements IDomicilioService{
         DomicilioDTO domicilioDTO = null;
         if (domicilio.isPresent())
             domicilioDTO = mapper.convertValue(domicilio, DomicilioDTO.class);
-
+        logger.info("Domicilio encontrado");
         return domicilioDTO;
     }
 
     @Override
     public void eliminarDomicilio(Long id) {
         domicilioRepository.deleteById(id);
+        logger.info("Domicilio eliminado");
     }
 
     @Override
@@ -53,7 +59,7 @@ public class DomicilioService implements IDomicilioService{
         for (Domicilio domicilio: domicilios) {
             domiciliosDTO.add(mapper.convertValue(domicilio, DomicilioDTO.class));
         }
-
+        logger.info("Todos los domicilios presentes");
         return domiciliosDTO;
     }
 }

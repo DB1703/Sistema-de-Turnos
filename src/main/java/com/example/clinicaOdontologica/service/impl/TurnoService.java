@@ -1,5 +1,6 @@
 package com.example.clinicaOdontologica.service.impl;
 
+import com.example.clinicaOdontologica.ClinicaOdontologicaApplication;
 import com.example.clinicaOdontologica.entity.Paciente;
 import com.example.clinicaOdontologica.entity.Turno;
 import com.example.clinicaOdontologica.repository.ITurnoRepository;
@@ -7,6 +8,7 @@ import com.example.clinicaOdontologica.repository.dto.PacienteDTO;
 import com.example.clinicaOdontologica.repository.dto.TurnoDTO;
 import com.example.clinicaOdontologica.service.ITurnoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,8 @@ import java.util.Set;
 @Service
 public class TurnoService implements ITurnoService {
 
+    private static final Logger logger = Logger.getLogger(TurnoService.class);
+
     @Autowired
     ITurnoRepository turnoRepository;
 
@@ -26,6 +30,8 @@ public class TurnoService implements ITurnoService {
     public void crearTurno(TurnoDTO turnoDTO) {
         Turno turno = mapper.convertValue(turnoDTO, Turno.class);
         turnoRepository.save(turno);
+
+        logger.info("Turno creado!");
     }
 
     @Override
@@ -34,13 +40,15 @@ public class TurnoService implements ITurnoService {
         TurnoDTO turnoDTO = null;
         if (turno.isPresent())
             turnoDTO = mapper.convertValue(turno, TurnoDTO.class);
-
+        logger.info("Turno Encontrado!");
         return turnoDTO;
+
     }
 
     @Override
     public void eliminarTurno(Long id) {
         turnoRepository.deleteById(id);
+        logger.info("Turno eliminado!");
     }
 
     @Override
@@ -52,7 +60,7 @@ public class TurnoService implements ITurnoService {
         for (Turno turno: turnos) {
             turnosDTO.add(mapper.convertValue(turno, TurnoDTO.class));
         }
-
+        logger.info("Todos los Turnos");
         return turnosDTO;
     }
 }
